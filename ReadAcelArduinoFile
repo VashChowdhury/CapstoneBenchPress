@@ -49,21 +49,25 @@ void loop() {
   if (accel.available()) {      // Wait for new data from accelerometer
     // Acceleration of x, y, and z directions in g units
    // Serial.print("x");
+    char buf[1024];
+   
     int x = abs(accel.getCalculatedX());
-    Serial.print(accel.getCalculatedX(), 3);
-    Serial.print("x");
-  //  Serial.print("y");
-    Serial.print(accel.getCalculatedY(), 3);
-    Serial.print("x");
     int z = abs(accel.getCalculatedZ());
-  //  Serial.print("z");
+        
+    Serial.print(accel.getCalculatedX(), 3);
+    Serial.print(",");
+    Serial.print(accel.getCalculatedY(), 3);
+    Serial.print(",");
     Serial.print(accel.getCalculatedZ(), 3);
     Serial.println();
+//    Serial.println();
     //abs; int x = accel.getCalculatedX();
     //; int z = accel.getCalculatedZ();
     //int xz = abs; int atan2(int x, int z);
     //Serial.print(xz);
-    Serial.println();
+
     
+//    snprintf(&buf[0], 1024, "%f,%f,%f\n", accel.getCalculatedX(), accel.getCalculatedY(), accel.getCalculatedZ());
+//    Serial.print(buf);
   }
 }
